@@ -14,13 +14,12 @@
     <header>
         <h1>PokeHunt</h1>
         <div class="card">
-            <h3 class="card-header">Hunt/Search Pokemon</h3>
-            <form id="poke-form" class="card-body">
-                <label class="form-label" for="search-pokemon">PokeHunt Search</label> 
+            <form id="poke-form" class="card-body columns">
+                <label class="form-label" for="search-pokemon" alt="PokeHunt Search"></label> 
                 <!-- Search button (add class/ID for CSS/JS manipulation) -->
-                <input type="text" id='search-pokemon' placeholder="PokeHunt Search"/>
+                <input type="text" class="input is-info is-normal column is-3 is-offset-4" id='search-pokemon' placeholder="PokeHunt Search"/>
                 <!-- Submit button (add class/ID for CSS/JS manipulation) -->
-                <button type="submit" id="search-btn" placeholder="Submit"></button>
+                <button type="submit" class="button is-danger" id="search-btn">Search</button>
             </form>
         </div>
     </header>
