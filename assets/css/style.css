@@ -1,0 +1,18 @@
+:root {
+    --primary-color: #ffcb05;
+    --secondary-color: #3d7dca;
+    --tertiary-color: #003a70;
+}
+
+body {
+    background-color: var(--secondary-color);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+header {
+    padding: 20px;
+    color: var(--tertiary-color);
+    background-color: var(--primary-color);
+    text-align: center;
+    font-size: 60px;
+}

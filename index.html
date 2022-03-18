@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>PokeHunt</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -18,34 +20,36 @@
                 <!-- Search button (add class/ID for CSS/JS manipulation) -->
                 <input type="text" id='search-pokemon' placeholder="PokeHunt Search"/>
                 <!-- Submit button (add class/ID for CSS/JS manipulation) -->
-                <button type="submit" placeholder="Submit"></button>
+                <button type="submit" id="search-btn" placeholder="Submit"></button>
             </form>
         </div>
     </header>
 
-    <main>
+    <main class="columns">
         <!-- Recently searched Pokemon (child container with parent for specific styling -->
-        <div>
+        <div class="column">
             <div>
                 <!-- List of recently searched Pokemon -->
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li>one</li>
+                    <li>two</li>
+                    <li>three</li>
+                    <li>four</li>
+                    <li>five</li>
+                    <li>six</li>
                     
                 </ul>
             </div>
         </div>
+        <img class="column">
         <!-- Image of Pokemon -->
         <img/>
         <!-- Pokemon Info -->
-        <div>
+        <div class="column">
             <!-- Create div elements for each section of info we want to include -->
         </div>
     </main>
+
 <script src="./assets/js/script.js"></script>    
 </body>
 
