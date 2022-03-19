@@ -15,7 +15,8 @@ function getPokeCard(card) {
             if (response.ok) {
                 response.json().then(function(data) {
                     console.log(data);
-                    displayCards(data, card);
+                    var randomInt = Math.floor(Math.random() * 10);
+                    displayCards(data, randomInt);
                 });
             } else {
             alert("Error: " + response.statusText);
@@ -48,8 +49,6 @@ function getPokeInfo(input) {
 };
 
 
-var displayCards = function(card) {
+var displayCards = function(card, randomInt) {
     $("#image").attr("src", card.data[randomInt].images.small);
 }
-
-var randomInt = Math.floor(Math.random() * 10);
