@@ -15,7 +15,7 @@ function getPokeCard(card) {
             if (response.ok) {
                 response.json().then(function(data) {
                     console.log(data);
-                    // displayCards(data, pokeCard);
+                    displayCards(data, card);
                 });
             } else {
             alert("Error: " + response.statusText);
@@ -46,3 +46,10 @@ function getPokeInfo(input) {
         alert("Unable to connect to PokeAPI");
     });
 };
+
+
+var displayCards = function(card) {
+    $("#image").attr("src", card.data[randomInt].images.small);
+}
+
+var randomInt = Math.floor(Math.random() * 10);
