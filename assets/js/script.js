@@ -62,15 +62,15 @@ var getPokeInfo = async (input) => {
     if (pokeInfoResponse.types.length === 1) {
         type.innerHTML = `Type: ${pokeInfoResponse.types[0].type.name}`;
     } else if (pokeInfoResponse.types.length === 2) {
-        type.innerHTML = `Type: ${[pokeInfoResponse.types[0].type.name, pokeInfoResponse.types[1].type.name]}`;
+        type.innerHTML = `Type: ${[pokeInfoResponse.types[0].type.name] + "-" + [pokeInfoResponse.types[1].type.name]}`;
     };
 
     if (pokeInfoResponse.abilities.length === 1) {
         ability.innerHTML = `Abilities: ${pokeInfoResponse.abilities[0].ability.name}`;
     } else if (pokeInfoResponse.abilities.length === 2) {
-        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name, pokeInfoResponse.abilities[1].ability.name]}`;
+        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " [pokeInfoResponse.abilities[1].ability.name]}`;
     } else if (pokeInfoResponse.abilities.length === 3) {
-        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name, pokeInfoResponse.abilities[1].ability.name, pokeInfoResponse.abilities[2].ability.name]}`;
+        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " + [pokeInfoResponse.abilities[1].ability.name] + ", " + [pokeInfoResponse.abilities[2].ability.name]}`;
     };
 
     stats.innerHTML = `Stats: ${""}`;
@@ -88,9 +88,6 @@ var getPokeInfo = async (input) => {
         card.appendChild(elem);
     })
     
-    // [hp, attack, defense, specialAttack, specialDefense, speed].forEach(elem => {
-    //     stats.appendChild(elem);
-    // })
     stats.appendChild(hp);
     stats.appendChild(attack);
     stats.appendChild(defense);
