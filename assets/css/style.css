@@ -8,9 +8,6 @@ body {
     background-color: var(--secondary-color);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-#poke-form {
-    background-color: #ffcb05;
-}
 
 header {
     padding: 20px;
@@ -20,6 +17,10 @@ header {
     font-size: 60px;
 }
 
-#searchBtn {
-    font-size: 25px;
+.white-box {
+    background-color: white;
+    color: black;
+    margin: 40px;
+    margin-top: 40px;
+
 }

@@ -14,40 +14,38 @@
 <body>
     <header>
         <h1>PokeHunt</h1>
-        <div class="card">
-            <form id="poke-form" class="card-body columns">
-                <label class="form-label" for="search-pokemon" alt="PokeHunt Search"></label> 
+        <div class="columns">
                 <!-- Search button (add class/ID for CSS/JS manipulation) -->
                 <input type="text" class="input is-info is-normal column is-3 is-offset-4" id='search-pokemon' placeholder="PokeHunt Search"/>
                 <!-- Submit button (add class/ID for CSS/JS manipulation) -->
                 <button type="submit" class="button is-danger" id="search-btn">Search</button>
-            </form>
         </div>
     </header>
 
     <main class="columns">
         <!-- Recently searched Pokemon (child container with parent for specific styling -->
-        <div class="column">
+        <div class="column white-box">
             <div>
                 <!-- List of recently searched Pokemon -->
                 <ul>
-                    <li>one</li>
-                    <li>two</li>
-                    <li>three</li>
-                    <li>four</li>
-                    <li>five</li>
-                    <li>six</li>
-                    
+                    <li>this</li>
+                    <li>is</li>
+                    <li>the</li>
+                    <li>search</li>
+                    <li>history</li>
+                    <li>pikachu</li>
                 </ul>
             </div>
         </div>
-        <img class="column" id="image">
+        <img class="column is-3 white-box" id="image">
         <!-- Image of Pokemon -->
         <img/>
         <!-- Pokemon Info -->
-        <h2 class="info">Showing info for: <span id="info-search-term"></span></h2>
-        <div class="column poke-info">
+        <div class="column white-box">
+            <h2 class="info">Showing info for: <span id="info-search-term"></span></h2>
+            <div class="poke-info">
             <!-- Create div elements for each section of info we want to include -->
+            </div>
         </div>
     </main>
 
