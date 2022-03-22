@@ -44,8 +44,8 @@ var getPokeInfo = async (input) => {
     while (card.firstChild) {
         card.removeChild(card.firstChild);
     }
+    
     infoSearchTerm.textContent = input;
-
     var type = document.createElement('h3');
     var ability = document.createElement('h3');
     var stats = document.createElement('div');
@@ -100,7 +100,8 @@ var getPokeInfo = async (input) => {
 // function to push user input (card) in to getPokeCard
 $('#search-btn').on('click', function(event) {
     event.preventDefault();
-    var userInput = $('#search-pokemon').val();
+    // take user input (to lowercase to work with info API) and input it into getPokeCard and getPokeInfo
+    var userInput = $('#search-pokemon').val().toString().toLowerCase();
     getPokeCard(userInput);
     getPokeInfo(userInput);
 })
