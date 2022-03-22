@@ -13,40 +13,37 @@
 <body>
     <header>
         <h1>PokeHunt</h1>
-        <div class="card">
-            <h3 class="card-header">Hunt/Search Pokemon</h3>
-            <form id="poke-form" class="card-body">
-                <label class="form-label" for="search-pokemon">PokeHunt Search</label> 
+            <div class="columns">
                 <!-- Search button (add class/ID for CSS/JS manipulation) -->
-                <input type="text" id='search-pokemon' placeholder="PokeHunt Search"/>
+                <input type="text" id='search-pokemon' placeholder="PokeHunt Search" class="input is-info is-normal column is-3 is-offset-4"/>
                 <!-- Submit button (add class/ID for CSS/JS manipulation) -->
-                <button type="submit" id="search-btn" placeholder="Submit"></button>
-            </form>
-        </div>
+                <button type="submit" id="search-btn" class="button is-danger">Search</button>
+            </div>
     </header>
 
     <main class="columns">
         <!-- Recently searched Pokemon (child container with parent for specific styling -->
-        <div class="column">
+        <div class="column white-box">
             <div>
                 <!-- List of recently searched Pokemon -->
                 <ul>
-                    <li>one</li>
-                    <li>two</li>
-                    <li>three</li>
-                    <li>four</li>
-                    <li>five</li>
-                    <li>six</li>
+                    <li>this</li>
+                    <li>is</li>
+                    <li>the</li>
+                    <li>search</li>
+                    <li>history</li>
+                    <li>pikachu</li>
                     
                 </ul>
             </div>
         </div>
-        <img class="column">
+        <img class="column is-3 white-box">
         <!-- Image of Pokemon -->
         <img/>
         <!-- Pokemon Info -->
-        <div class="column">
-            <!-- Create div elements for each section of info we want to include -->
+        <div class="column white-box">
+        something here so we can view styling.
+        <!-- Create div elements for each section of info we want to include -->
         </div>
     </main>
 
