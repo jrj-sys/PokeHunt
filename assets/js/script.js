@@ -9,7 +9,7 @@ function getPokeCard(card) {
             if (response.ok) {
                 response.json().then(function(data) {
                     console.log(data);
-                    var randomInt = Math.floor(Math.random() * 6);
+                    var randomInt = Math.floor(Math.random() * data.count);
                     displayCards(data, randomInt);
                 });
             } else {
@@ -91,8 +91,10 @@ var getPokeInfo = async (input) => {
     specialDefense.innerHTML = `Special Defense: ${pokeInfoResponse.stats[4].base_stat}`;
     speed.innerHTML = `Speed: ${pokeInfoResponse.stats[5].base_stat}`;
     pokedexnum.innerHTML = `Pokedex #: ${pokeInfoResponse.id}`;
-    height.innerHTML = `Height: ${pokeInfoResponse.height}`;
-    weight.innerHTML = `Weight: ${pokeInfoResponse.weight}`;
+    var heightFormat = parseInt(pokeInfoResponse.height)/10 + " m";
+    var weightFormat = parseInt(pokeInfoResponse.weight)/10 + " kg";
+    height.innerHTML = `Height: ${heightFormat}`;
+    weight.innerHTML = `Weight: ${weightFormat}`;
     
     [type, ability, stats, pokedexnum, height, weight].forEach(elem => {
         card.appendChild(elem);
