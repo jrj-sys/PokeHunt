@@ -1,0 +1,66 @@
+:root {
+    --primary-color: #ffcb05;
+    --secondary-color: #3d7dca;
+    --tertiary-color: #003a70;
+}
+
+body {
+    background-image: linear-gradient(50deg, #3d7dca 0%, #003a70 52%, #001833 90%);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100vh;
+}
+
+header {
+    padding-bottom: 20px;
+    color: var(--tertiary-color);
+    background-color: var(--primary-color);
+    text-align: center;
+    font-size: 60px;
+}
+
+.solid-font {
+    font-family: 'Pokemon Solid', sans-serif;
+    padding-bottom: 25px;
+}
+
+.hollow-font {
+    font-family: 'Pokemon Hollow', sans-serif;
+    padding-bottom: 25px;
+}
+
+.white-box {
+    background: rgb(61, 124, 202, .00);
+    color: #ffcb05;
+    font-size: 32px;
+    margin: 30px;
+    margin-top: 40px;
+    border-radius: 5px;
+    height: 100%;
+  
+}
+
+#list-opacity {
+    background: rgb(61, 124, 202);
+    background: rgb(61, 124, 202, .2);
+    height: 69vh;
+}
+
+.stats-card-font {
+    font-family: 'Lalezar', cursive;
+    font-size: 42px;
+}
+
+h3 {
+    padding: 10px;
+    font-family: 'Lalezar', cursive;
+}
+
+div ul {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+div ul li {
+    font-size: 22px;
+    padding-top: 10px;
+}
