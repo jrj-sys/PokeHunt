@@ -58,19 +58,29 @@ var getPokeInfo = async (input) => {
     var pokedexnum = document.createElement('h3');
     var height = document.createElement('h3');
     var weight = document.createElement('h3');
-
+    
     if (pokeInfoResponse.types.length === 1) {
-        type.innerHTML = `Type: ${pokeInfoResponse.types[0].type.name}`;
+        var pokemonTypes = pokeInfoResponse.types[0].type.name.slice(0,1).toUpperCase() + pokeInfoResponse.types[0].type.name.slice(1)
+        console.log(pokemonTypes)
+        type.innerHTML = `Type: ${pokemonTypes}`;
     } else if (pokeInfoResponse.types.length === 2) {
-        type.innerHTML = `Type: ${[pokeInfoResponse.types[0].type.name] + "-" + [pokeInfoResponse.types[1].type.name]}`;
+        var pokemonTypes1 = pokeInfoResponse.types[0].type.name.slice(0,1).toUpperCase() + pokeInfoResponse.types[0].type.name.slice(1)
+        var pokemonTypes2 = pokeInfoResponse.types[1].type.name.slice(0,1).toUpperCase() + pokeInfoResponse.types[1].type.name.slice(1)
+        type.innerHTML = `Type: ${[pokemonTypes1] + "-" + [pokemonTypes2]}`;
     };
 
     if (pokeInfoResponse.abilities.length === 1) {
-        ability.innerHTML = `Abilities: ${pokeInfoResponse.abilities[0].ability.name}`;
+        var abilityName = pokeInfoResponse.abilities[0].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[0].ability.name.slice(1)
+        ability.innerHTML = `Abilities: ${abilityName}`;
     } else if (pokeInfoResponse.abilities.length === 2) {
-        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " + [pokeInfoResponse.abilities[1].ability.name]}`;
+        var abilityName1 = pokeInfoResponse.abilities[0].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[0].ability.name.slice(1)
+        var abilityName2 = pokeInfoResponse.abilities[1].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[1].ability.name.slice(1)
+        ability.innerHTML = `Abilities: ${[abilityName1] + ", " + [abilityName2]}`;
     } else if (pokeInfoResponse.abilities.length === 3) {
-        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " + [pokeInfoResponse.abilities[1].ability.name] + ", " + [pokeInfoResponse.abilities[2].ability.name]}`;
+        var abilityName3 = pokeInfoResponse.abilities[0].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[0].ability.name.slice(1)
+        var abilityName4 = pokeInfoResponse.abilities[1].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[1].ability.name.slice(1)
+        var abilityName5 = pokeInfoResponse.abilities[2].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[2].ability.name.slice(1)
+        ability.innerHTML = `Abilities: ${[abilityName3] + ", " + [abilityName4] + ", " + [abilityName5]}`;
     };
 
     stats.innerHTML = `Stats: ${""}`;
