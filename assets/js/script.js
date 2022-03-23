@@ -128,13 +128,13 @@ var getSearchHistory = function() {
 
 var createSavedSearch = function(input) {
     var recentContainer = $('#saved-search');
-    var recentBtn = document.createElement('li');
+    var recentBtn = document.createElement('button');
     recentBtn.classList.add('saved-btn');
     recentBtn.innerHTML = $('#search-pokemon').val().toString().toLowerCase();
     recentContainer.append(recentBtn);
 }
 
-$('#list-opacity').on('click', 'li', function(event) {
+$('#list-opacity').on('click', 'button', function(event) {
     var savedSearch = event.target.innerHTML;
     getPokeCard(savedSearch);
     getPokeInfo(savedSearch);
