@@ -139,7 +139,7 @@ var createSavedSearch = function(input) {
     recentContainer.append(recentBtn);
 }
 
-$('#list-opacity').on('click', 'button', function(event) {
+$('#saved-search').on('click', 'button', function(event) {
     var savedSearch = event.target.innerHTML;
     getPokeCard(savedSearch);
     getPokeInfo(savedSearch);
