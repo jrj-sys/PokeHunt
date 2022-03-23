@@ -48,13 +48,13 @@ var getPokeInfo = async (input) => {
     infoSearchTerm.textContent = input;
     var type = document.createElement('h3');
     var ability = document.createElement('h3');
-    var stats = document.createElement('div');
-    var hp = document.createElement('p');
-    var attack = document.createElement('p');
-    var defense = document.createElement('p');
-    var specialAttack = document.createElement('p');
-    var specialDefense = document.createElement('p');
-    var speed = document.createElement('p');
+    var stats = document.createElement('h3');
+    var hp = document.createElement('h3');
+    var attack = document.createElement('h3');
+    var defense = document.createElement('h3');
+    var specialAttack = document.createElement('h3');
+    var specialDefense = document.createElement('h3');
+    var speed = document.createElement('h3');
     var pokedexnum = document.createElement('h3');
     var height = document.createElement('h3');
     var weight = document.createElement('h3');
@@ -96,17 +96,10 @@ var getPokeInfo = async (input) => {
     height.innerHTML = `Height: ${heightFormat}`;
     weight.innerHTML = `Weight: ${weightFormat}`;
     
-    [type, ability, stats, pokedexnum, height, weight].forEach(elem => {
+    [type, ability, stats, hp, attack, defense, specialAttack, specialDefense, speed, pokedexnum, height, weight].forEach(elem => {
         card.appendChild(elem);
     })
     
-    stats.appendChild(hp);
-    stats.appendChild(attack);
-    stats.appendChild(defense);
-    stats.appendChild(specialAttack);
-    stats.appendChild(specialDefense);
-    stats.appendChild(speed);
-
 };
 
 // function to push user input (card) in to getPokeCard
