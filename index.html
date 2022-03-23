@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>PokeHunt</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <link href="http://fonts.cdnfonts.com/css/pokemon-hollow" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
     <script src="./assets/js/script.js" defer></script>  
 </head>
 
 <body>
     <header>
-        <h1>PokeHunt</h1>
+        <h1 class="solid-font">Poke<span class="hollow-font">Hunt</span></h1>
         <div class="columns">
                 <!-- Search button (add class/ID for CSS/JS manipulation) -->
                 <input type="text" class="input is-info is-normal column is-3 is-offset-4" id='search-pokemon' placeholder="PokeHunt Search"/>
@@ -24,25 +28,25 @@
 
     <main class="columns">
         <!-- Recently searched Pokemon (child container with parent for specific styling -->
-        <div class="column white-box">
+        <div class="column is-2 white-box" id="list-opacity">
             <div>
                 <!-- List of recently searched Pokemon -->
-                <ul>
-                    <li>this</li>
-                    <li>is</li>
-                    <li>the</li>
-                    <li>search</li>
-                    <li>history</li>
-                    <li>pikachu</li>
+                <ul>Recently Searched:
+                    <li>Pikachu</li>
+                    <li>Charizard</li>
+                    <li>Mewtwo</li>
+                    <li>Eevee</li>
+                    <li>Snorlax</li>
+                    <li>Squirtle</li>
                 </ul>
             </div>
         </div>
-        <img class="column is-3 white-box" id="image">
+        <img class="column is-3 is-offset-1 white-box" id="image">
         <!-- Image of Pokemon -->
         <img/>
         <!-- Pokemon Info -->
         <div class="column white-box">
-            <h2 class="info">Showing info for: <span id="info-search-term"></span></h2>
+            <h2 class="info stats-card-font">Pokemon Stats: <span id="info-search-term"></span></h2>
             <div class="poke-info">
             <!-- Create div elements for each section of info we want to include -->
             </div>
