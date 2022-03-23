@@ -1,5 +1,4 @@
-var infoContainerEl = document.querySelector('.poke-info');
-var infoSearchTerm = document.querySelector('#info-search-term');
+var searchHistory = [];
 
 function getPokeCard(card) {
     // format the cards api url
@@ -45,6 +44,7 @@ var getPokeInfo = async (input) => {
         card.removeChild(card.firstChild);
     }
     
+    var infoSearchTerm = $('#info-search-term');
     infoSearchTerm.textContent = input;
     var type = document.createElement('h3');
     var ability = document.createElement('h3');
@@ -68,7 +68,7 @@ var getPokeInfo = async (input) => {
     if (pokeInfoResponse.abilities.length === 1) {
         ability.innerHTML = `Abilities: ${pokeInfoResponse.abilities[0].ability.name}`;
     } else if (pokeInfoResponse.abilities.length === 2) {
-        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " [pokeInfoResponse.abilities[1].ability.name]}`;
+        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " + [pokeInfoResponse.abilities[1].ability.name]}`;
     } else if (pokeInfoResponse.abilities.length === 3) {
         ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " + [pokeInfoResponse.abilities[1].ability.name] + ", " + [pokeInfoResponse.abilities[2].ability.name]}`;
     };
@@ -104,8 +104,38 @@ $('#search-btn').on('click', function(event) {
     var userInput = $('#search-pokemon').val().toString().toLowerCase();
     getPokeCard(userInput);
     getPokeInfo(userInput);
+    getSearchHistory();
+    createSavedSearch();
 })
 
 var displayCards = function(card, randomInt) {
     $("#image").attr("src", card.data[randomInt].images.small);
 }
+
+
+var getSearchHistory = function() {
+    var history = localStorage.getItem("userSearch");    
+    var userInput = $('#search-pokemon').val().toString().toLowerCase();
+    if (!history) {
+        searchHistory.push(userInput);
+        localStorage.setItem("userSearch", searchHistory);
+    } else {
+    searchHistory = [history];
+    searchHistory.push(userInput);
+    localStorage.setItem("userSearch", searchHistory);
+    }
+}
+
+var createSavedSearch = function(input) {
+    var recentContainer = $('#saved-search');
+    var recentBtn = document.createElement('li');
+    recentBtn.classList.add('saved-btn');
+    recentBtn.innerHTML = $('#search-pokemon').val().toString().toLowerCase();
+    recentContainer.append(recentBtn);
+}
+
+$('#list-opacity').on('click', 'li', function(event) {
+    var savedSearch = event.target.innerHTML;
+    getPokeCard(savedSearch);
+    getPokeInfo(savedSearch);
+});
