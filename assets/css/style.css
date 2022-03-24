@@ -1,15 +1,21 @@
 :root {
-    --primary-color: #ffcb05;
-    --secondary-color: #3d7dca;
+    --primary-color: #ffcc00;
+    --secondary-color: #0075be;
     --tertiary-color: #003a70;
 }
 
-body {
-    background-image: linear-gradient(50deg, #3d7dca 0%, #003a70 52%, #001833 90%);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    height: 100vh;
+* {
+    box-sizing: border-box;
 }
 
+body, html {
+    background-image: linear-gradient(50deg, #3d7dca 0%, #003a70 52%, #001833 90%);
+    font-family: 'Lalezar', cursive;
+    height: 100%;
+    width: 100%;
+}
+
+/* header and search bar START */
 header {
     padding-bottom: 20px;
     color: var(--tertiary-color);
@@ -28,39 +34,90 @@ header {
     padding-bottom: 25px;
 }
 
-.white-box {
+.box-style {
     background: rgb(61, 124, 202, .00);
     color: #ffcb05;
-    font-size: 32px;
+    font-size: 28px;
     margin: 30px;
     margin-top: 40px;
     border-radius: 5px;
     height: 100%;
   
 }
+/* header and search navigation END */
 
+
+/* search history START*/
 #list-opacity {
     background: rgb(61, 124, 202);
     background: rgb(61, 124, 202, .2);
-    height: 69vh;
+    height: 75vh;
+    text-align: center;
 }
 
+.saved-btn {
+    width: 100%;
+    font-size: 22px;
+    border-radius: 5px;
+    color: var(--tertiary-color);
+    background: aliceblue;
+    font-weight: bold;
+}
+.saved-btn:hover {
+    background-color: var(--primary-color);
+}
+/* search history END*/
+
+
+/* stats column START*/
 .stats-card-font {
     font-family: 'Lalezar', cursive;
-    font-size: 42px;
+    font-size: 36px;
 }
 
 h3 {
-    padding: 10px;
+    padding-bottom: 5px;
     font-family: 'Lalezar', cursive;
 }
+/* stats column END*/
 
-div ul {
-    font-size: 28px;
-    font-weight: bold;
+
+
+/* smaller screen sizes */
+@media screen and (max-width: 980px) {
+    body {
+      overflow-x: hidden;
+    }
+
+    .stats-card-font {
+        font-size: 32px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    #list-opacity {
+        width: 25%;
+    }
 }
 
-div ul li {
-    font-size: 22px;
-    padding-top: 10px;
+@media screen and (max-width: 768px) {
+    body {
+        width: 100%;
+    }
 }
+
+/*
+
+
+@media screen and (max-width: 575px) {
+   
+}
+*/
+
+/* 980 768 575 */
