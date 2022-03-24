@@ -23,7 +23,7 @@ Stefan Oddsson: (https://wwww.github.com/StebbiO)
 ```
 
 ## Links:
-Deployed site: https://jrj-sys.github.io/PokeHunt/  
+Deployed site: https://jrj-sys.github.io/PokeHunt/      
 GitHub URL: https://github.com/jrj-sys/PokeHunt
 
 # Note:
