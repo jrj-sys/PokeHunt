@@ -9,7 +9,7 @@ function getPokeCard(card) {
             if (response.ok) {
                 response.json().then(function(data) {
                     console.log(data);
-                    var randomInt = Math.floor(Math.random() * 6);
+                    var randomInt = Math.floor(Math.random() * data.count);
                     displayCards(data, randomInt);
                 });
             } else {
@@ -48,29 +48,39 @@ var getPokeInfo = async (input) => {
     infoSearchTerm.textContent = input;
     var type = document.createElement('h3');
     var ability = document.createElement('h3');
-    var stats = document.createElement('div');
-    var hp = document.createElement('p');
-    var attack = document.createElement('p');
-    var defense = document.createElement('p');
-    var specialAttack = document.createElement('p');
-    var specialDefense = document.createElement('p');
-    var speed = document.createElement('p');
+    var stats = document.createElement('h3');
+    var hp = document.createElement('h3');
+    var attack = document.createElement('h3');
+    var defense = document.createElement('h3');
+    var specialAttack = document.createElement('h3');
+    var specialDefense = document.createElement('h3');
+    var speed = document.createElement('h3');
     var pokedexnum = document.createElement('h3');
     var height = document.createElement('h3');
     var weight = document.createElement('h3');
-
+    
     if (pokeInfoResponse.types.length === 1) {
-        type.innerHTML = `Type: ${pokeInfoResponse.types[0].type.name}`;
+        var pokemonTypes = pokeInfoResponse.types[0].type.name.slice(0,1).toUpperCase() + pokeInfoResponse.types[0].type.name.slice(1)
+        console.log(pokemonTypes)
+        type.innerHTML = `Type: ${pokemonTypes}`;
     } else if (pokeInfoResponse.types.length === 2) {
-        type.innerHTML = `Type: ${[pokeInfoResponse.types[0].type.name] + "-" + [pokeInfoResponse.types[1].type.name]}`;
+        var pokemonTypes1 = pokeInfoResponse.types[0].type.name.slice(0,1).toUpperCase() + pokeInfoResponse.types[0].type.name.slice(1)
+        var pokemonTypes2 = pokeInfoResponse.types[1].type.name.slice(0,1).toUpperCase() + pokeInfoResponse.types[1].type.name.slice(1)
+        type.innerHTML = `Type: ${[pokemonTypes1] + "-" + [pokemonTypes2]}`;
     };
 
     if (pokeInfoResponse.abilities.length === 1) {
-        ability.innerHTML = `Abilities: ${pokeInfoResponse.abilities[0].ability.name}`;
+        var abilityName = pokeInfoResponse.abilities[0].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[0].ability.name.slice(1)
+        ability.innerHTML = `Abilities: ${abilityName}`;
     } else if (pokeInfoResponse.abilities.length === 2) {
-        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " + [pokeInfoResponse.abilities[1].ability.name]}`;
+        var abilityName1 = pokeInfoResponse.abilities[0].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[0].ability.name.slice(1)
+        var abilityName2 = pokeInfoResponse.abilities[1].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[1].ability.name.slice(1)
+        ability.innerHTML = `Abilities: ${[abilityName1] + ", " + [abilityName2]}`;
     } else if (pokeInfoResponse.abilities.length === 3) {
-        ability.innerHTML = `Abilities: ${[pokeInfoResponse.abilities[0].ability.name] + ", " + [pokeInfoResponse.abilities[1].ability.name] + ", " + [pokeInfoResponse.abilities[2].ability.name]}`;
+        var abilityName3 = pokeInfoResponse.abilities[0].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[0].ability.name.slice(1)
+        var abilityName4 = pokeInfoResponse.abilities[1].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[1].ability.name.slice(1)
+        var abilityName5 = pokeInfoResponse.abilities[2].ability.name.slice(0,1).toUpperCase()+pokeInfoResponse.abilities[2].ability.name.slice(1)
+        ability.innerHTML = `Abilities: ${[abilityName3] + ", " + [abilityName4] + ", " + [abilityName5]}`;
     };
 
     stats.innerHTML = `Stats: ${""}`;
@@ -81,20 +91,15 @@ var getPokeInfo = async (input) => {
     specialDefense.innerHTML = `Special Defense: ${pokeInfoResponse.stats[4].base_stat}`;
     speed.innerHTML = `Speed: ${pokeInfoResponse.stats[5].base_stat}`;
     pokedexnum.innerHTML = `Pokedex #: ${pokeInfoResponse.id}`;
-    height.innerHTML = `Height: ${pokeInfoResponse.height}`;
-    weight.innerHTML = `Weight: ${pokeInfoResponse.weight}`;
+    var heightFormat = parseInt(pokeInfoResponse.height)/10 + " m";
+    var weightFormat = parseInt(pokeInfoResponse.weight)/10 + " kg";
+    height.innerHTML = `Height: ${heightFormat}`;
+    weight.innerHTML = `Weight: ${weightFormat}`;
     
-    [type, ability, stats, pokedexnum, height, weight].forEach(elem => {
+    [type, ability, stats, hp, attack, defense, specialAttack, specialDefense, speed, pokedexnum, height, weight].forEach(elem => {
         card.appendChild(elem);
     })
     
-    stats.appendChild(hp);
-    stats.appendChild(attack);
-    stats.appendChild(defense);
-    stats.appendChild(specialAttack);
-    stats.appendChild(specialDefense);
-    stats.appendChild(speed);
-
 };
 
 // function to push user input (card) in to getPokeCard
@@ -134,7 +139,7 @@ var createSavedSearch = function(input) {
     recentContainer.append(recentBtn);
 }
 
-$('#list-opacity').on('click', 'button', function(event) {
+$('#saved-search').on('click', 'button', function(event) {
     var savedSearch = event.target.innerHTML;
     getPokeCard(savedSearch);
     getPokeInfo(savedSearch);
