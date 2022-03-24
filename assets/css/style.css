@@ -110,14 +110,44 @@ h3 {
     body {
         width: 100%;
     }
+
+    header h1 {
+        font-size: 75px;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .input {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    #search-btn {
+        width: 83.33%;
+        font-size: 22px;
+    }
+
+    #stat-column {
+        text-align: center;
+    }
+
+    .stats-card-font {
+        font-size: 42px;
+    }
+
+    h3 {
+        font-size: 36px;
+    }
+
+    #list-opacity {
+        height: fit-content;
+        width: 95%;
+    }
+
+    #image {
+        width: 95%;
+    }
 }
-
-/*
-
-
-@media screen and (max-width: 575px) {
-   
-}
-*/
-
-/* 980 768 575 */

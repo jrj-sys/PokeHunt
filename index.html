@@ -20,7 +20,7 @@
         <h1 class="solid-font">Poke<span class="hollow-font">Hunt</span></h1>
         <div class="columns">
                 <!-- Search button (add class/ID for CSS/JS manipulation) -->
-                <input type="text" class="input is-info is-normal column is-3 is-offset-4" id='search-pokemon' placeholder="PokeHunt Search"/>
+                <input type="text" class="input is-info column is-3-desktop is-offset-4-desktop is-3-tablet is-offset-4-tablet is-10-mobile is-offset-1-mobile" id='search-pokemon' placeholder="PokeHunt Search"/>
                 <!-- Submit button (add class/ID for CSS/JS manipulation) -->
                 <button type="submit" class="button is-danger" id="search-btn">Search</button>
         </div>
@@ -34,17 +34,17 @@
                 <h2 class="screen">Recently Searched</h2>
             </div>
         </div>
-
-        <!-- Image of Pokemon -->
-        <img class="column is-3-desktop is-offset-1-desktop box-style" id="image"><img/>
         
         <!-- Pokemon Info -->
-        <div class="column box-style">
-            <h2 class="info stats-card-font">Pokemon Stats: <span id="info-search-term"></span></h2>
-            <div class="poke-info">
+        <div class="column is-3 is-offset-1-desktop box-style" id="stat-column">
+            <h2 class="info stats-card-font">Pokemon Stats <span id="info-search-term"></span></h2>
+            <div class="poke-info"></div>
             <!-- Create div elements for each section of info we want to include -->
-            </div>
         </div>
+
+        <!-- Image of Pokemon -->
+        <img class="column is-3-desktop box-style" id="image"><img/>
+
     </main>
 
 </body>
