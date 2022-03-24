@@ -23,6 +23,10 @@ Jarvis Harris: (https://wwww.github.com/j-harris17)
 Stefan Oddsson: (https://wwww.github.com/StebbiO)  
 ```
 
+## Links:
+Deployed site: https://jrj-sys.github.io/PokeHunt/
+GitHub URL: https://github.com/jrj-sys/PokeHunt
+
 # Note:
 ```md
 PokeHunt is not in anyway affiliated with Pokémon. 
