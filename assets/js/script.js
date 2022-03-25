@@ -1,3 +1,5 @@
+// take user input (to lowercase to work with info API) and input it into getPokeCard and getPokeInfo
+var userInput = $('#search-pokemon').val().toString().toLowerCase();
 var searchHistory = [];
 
 function getPokeCard(card) {
@@ -102,16 +104,7 @@ var getPokeInfo = async (input) => {
     
 };
 
-// function to push user input (card) in to getPokeCard
-$('#search-btn').on('click', function(event) {
-    event.preventDefault();
-    // take user input (to lowercase to work with info API) and input it into getPokeCard and getPokeInfo
-    var userInput = $('#search-pokemon').val().toString().toLowerCase();
-    getPokeCard(userInput);
-    getPokeInfo(userInput);
-    getSearchHistory();
-    createSavedSearch();
-})
+
 
 var displayCards = function(card, randomInt) {
     $("#image").attr("src", card.data[randomInt].images.small);
@@ -139,8 +132,29 @@ var createSavedSearch = function(input) {
     recentContainer.append(recentBtn);
 }
 
+var displayCurrentInfoAndCard = function(event) {
+    event.preventDefault();
+    // if user enters blank and clicks search button, returns to original page
+    if (!userInput) {
+        return;
+    }
+    // if user enters same search back to back returns to original page
+    if (isLastSearched(userInput)) {
+        return;
+    };
+
+    getSearchHistory(userInput);
+    createSavedSearch(userInput);
+    getPokeInfo(userInput);
+    getPokeCard(userInput);
+}
+
+// function to push user input (card) in to getPokeCard
+$('#search-btn').on('click', displayCurrentInfoAndCard);
+
 $('#saved-search').on('click', 'button', function(event) {
     var savedSearch = event.target.innerHTML;
     getPokeCard(savedSearch);
     getPokeInfo(savedSearch);
+    localStorage.setItem('latestPoke', savedSearch)
 });
