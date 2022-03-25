@@ -1,4 +1,6 @@
 var searchHistory = [];
+var recentContainer = document.getElementById('saved-search');
+    console.log(recentContainer);
 
 var onRefresh = () => {
     var poke = localStorage.getItem('latestPoke');
@@ -8,6 +10,7 @@ var onRefresh = () => {
         return;
     }
     searchHistory = userSearch.split(',');
+    console.log(searchHistory);
     getPokeInfo(poke);
     getPokeCard(poke);
     searchHistory.forEach(pokemon => createSavedSearch(pokemon));
@@ -143,11 +146,11 @@ var createSavedSearch = (poke) => {
             return;
         }
     }
-    var recentContainer = $('#saved-search').val();
+    
     var recentBtn = document.createElement('button');
     recentBtn.classList.add('saved-btn');
     recentBtn.innerHTML = poke;
-    recentContainer.appendChild(recentBtn);
+    recentContainer.append(recentBtn);
 }
 
 var isLastSearched = (poke) => {
