@@ -50,7 +50,6 @@ var getPokeInfo = async (input) => {
     infoSearchTerm.textContent = input;
     var type = document.createElement('h3');
     var ability = document.createElement('h3');
-    var stats = document.createElement('h3');
     var hp = document.createElement('h3');
     var attack = document.createElement('h3');
     var defense = document.createElement('h3');
@@ -85,7 +84,6 @@ var getPokeInfo = async (input) => {
         ability.innerHTML = `Abilities: ${[abilityName3] + ", " + [abilityName4] + ", " + [abilityName5]}`;
     };
 
-    stats.innerHTML = `Stats: ${""}`;
     hp.innerHTML = `HP: ${pokeInfoResponse.stats[0].base_stat}`;
     attack.innerHTML = `Attack: ${pokeInfoResponse.stats[1].base_stat}`;
     defense.innerHTML = `Defense: ${pokeInfoResponse.stats[2].base_stat}`;
@@ -98,7 +96,7 @@ var getPokeInfo = async (input) => {
     height.innerHTML = `Height: ${heightFormat}`;
     weight.innerHTML = `Weight: ${weightFormat}`;
     
-    [type, ability, stats, hp, attack, defense, specialAttack, specialDefense, speed, pokedexnum, height, weight].forEach(elem => {
+    [type, ability, hp, attack, defense, specialAttack, specialDefense, speed, pokedexnum, height, weight].forEach(elem => {
         card.appendChild(elem);
     })
     
@@ -124,7 +122,7 @@ var getSearchHistory = function() {
     }
 }
 
-var createSavedSearch = function(input) {
+var createSavedSearch = function() {
     var recentContainer = $('#saved-search');
     var recentBtn = document.createElement('button');
     recentBtn.classList.add('saved-btn');
