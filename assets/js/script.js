@@ -1,6 +1,4 @@
 var searchHistory = [];
-var recentContainer = document.getElementById('saved-search');
-    console.log(recentContainer);
 
 var onRefresh = () => {
     var poke = localStorage.getItem('latestPoke');
@@ -139,8 +137,9 @@ var getSearchHistory = function(poke) {
 }
 
 var createSavedSearch = (poke) => {
-    
-    for (let child of recentContainer.children) {
+    var recentContainer =$('#saved-search');
+    console.log(recentContainer);
+    for (let child of recentContainer.children()) {
         console.log(child.innerHTML);
         if (child.innerHTML.includes(poke)) {
             return;
