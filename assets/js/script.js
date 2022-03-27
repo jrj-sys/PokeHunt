@@ -1,8 +1,22 @@
 var searchHistory = [];
 
-function getPokeCard(card) {
+var onRefresh = () => {
+    var poke = localStorage.getItem('latestPoke');
+    var userSearch = localStorage.getItem('userSearch');
+
+    if (!poke || !userSearch) {
+        return;
+    }
+    searchHistory = userSearch.split(',');
+    console.log(searchHistory);
+    getPokeInfo(poke);
+    getPokeCard(poke);
+    searchHistory.forEach(pokemon => createSavedSearch(pokemon));
+}
+
+function getPokeCard(input) {
     // format the cards api url
-    var apiUrl = "https://api.pokemontcg.io/v2/cards?pageSize=10&q=name:" + card;
+    var apiUrl = "https://api.pokemontcg.io/v2/cards?pageSize=10&q=name:" + input;
     // make a get request to url
     fetch(apiUrl).then(function(response) {
             // request was successful
@@ -100,45 +114,83 @@ var getPokeInfo = async (input) => {
     
 };
 
-// function to push user input (card) in to getPokeCard
-$('#search-btn').on('click', function(event) {
-    event.preventDefault();
-    // take user input (to lowercase to work with info API) and input it into getPokeCard and getPokeInfo
-    var userInput = $('#search-pokemon').val().toString().toLowerCase();
-    getPokeCard(userInput);
-    getPokeInfo(userInput);
-    getSearchHistory();
-    createSavedSearch();
-})
-
 var displayCards = function(card, randomInt) {
     $("#image").attr("src", card.data[randomInt].images.small);
 }
 
 
-var getSearchHistory = function() {
+var getSearchHistory = function(poke) {
     var history = localStorage.getItem("userSearch");    
-    var userInput = $('#search-pokemon').val().toString().toLowerCase();
+    localStorage.setItem('latestPoke', poke);
     if (!history) {
-        searchHistory.push(userInput);
+        searchHistory.push(poke);
         localStorage.setItem("userSearch", searchHistory);
     } else {
-    searchHistory = [history];
-    searchHistory.push(userInput);
-    localStorage.setItem("userSearch", searchHistory);
+        searchHistory = history.split(',');
+        if (searchHistory.includes(poke)) {
+            return;
+        }
+        searchHistory.push(poke);
+        console.log(searchHistory);
+        localStorage.setItem("userSearch", searchHistory);
     }
 }
 
-var createSavedSearch = function() {
-    var recentContainer = $('#saved-search');
+var createSavedSearch = (poke) => {
+    var recentContainer =$('#saved-search');
+    console.log(recentContainer);
+    for (let child of recentContainer.children()) {
+        console.log(child.innerHTML);
+        if (child.innerHTML.includes(poke)) {
+            return;
+        }
+    }
+    
     var recentBtn = document.createElement('button');
     recentBtn.classList.add('saved-btn');
-    recentBtn.innerHTML = $('#search-pokemon').val().toString().toLowerCase();
+    recentBtn.innerHTML = poke;
     recentContainer.append(recentBtn);
 }
 
-$('#saved-search').on('click', 'button', function(event) {
+var isLastSearched = (poke) => {
+    var latestPokeName = localStorage.getItem('latestPoke');
+
+    if (latestPokeName === poke) {
+        return true;
+    }
+    return false;
+}
+
+var displayCurrentInfoAndCard = function(userInput) {
+    
+    // if user enters blank and clicks search button, returns to original page
+    if (!userInput) {
+        return;
+    }
+    // if user enters same search back to back returns to original page
+    if (isLastSearched(userInput)) {
+        return;
+    };
+
+    getSearchHistory(userInput);
+    createSavedSearch(userInput);
+    getPokeInfo(userInput);
+    getPokeCard(userInput);
+}
+
+// function to push user input (card) in to getPokeCard
+$('#search-btn').on('click', function(event) {
+    event.preventDefault();
+    // take user input (to lowercase to work with info API) and input it into getPokeCard and getPokeInfo
+    var userInput = $('#search-pokemon').val().toString().toLowerCase();
+    displayCurrentInfoAndCard(userInput);
+});
+
+$('#saved-search').on('click', function(event) {
     var savedSearch = event.target.innerHTML;
     getPokeCard(savedSearch);
     getPokeInfo(savedSearch);
+    localStorage.setItem('latestPoke', savedSearch)
 });
+
+onRefresh();
