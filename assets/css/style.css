@@ -141,7 +141,7 @@ h3 {
     }
 
     #search-btn {
-        width: 83.33%;
+        width: 66.66%;
         font-size: 22px;
     }
 
@@ -170,5 +170,44 @@ h3 {
 @media screen and (max-width: 575px) {
     .footer {
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+    body {
+        margin: 0;
+    }
+    header h1 {
+      font-size: 50px;
+    }
+
+  .input {
+      font-size: 18px;
+    }
+
+    #search-btn {
+        font-size: 18px;
+    }
+
+    .footer {
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .stats-card-font {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    #image {
+        padding-right: 30px;
+    }
+
+    #list-opacity {
+        width: 90%;
     }
 }
